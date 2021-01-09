@@ -44,7 +44,8 @@ function Timer({ time }) {
         return rawTimeFraction - (1 / targetTime) * (1 - rawTimeFraction);
     }
     const updateCircleDasharray = () => {
-        const rawTimeFraction = getRawTimeFraction();
+        let rawTimeFraction = getRawTimeFraction();
+        if (rawTimeFraction < 0.1) rawTimeFraction = 0.99999999; 
         const newCircleDasharray = `${(((rawTimeFraction * 283)).toFixed(0))} 283`;
         setCircleDasharray(newCircleDasharray);
     }
@@ -75,7 +76,7 @@ function Timer({ time }) {
             <div className="flex column center align-center timer-container-inner-circle">
                 <TimerRing circleDasharray={circleDasharray} />
                 <div className="flex column center align-center inner-timer-container">
-                    <div className="flex center time-title">{formatTime()}</div>
+                    <div className="flex center timer-time">{formatTime()}</div>
                     <div
                         className="pointer uppercase time-btn"
                         onClick={isTimerWorkingHandler}

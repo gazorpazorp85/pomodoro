@@ -19,5 +19,6 @@
     &.selected {
         background-color: $clr3;
         cursor: default;
+        color: inherit;
     }
 }
