@@ -1,0 +1,43 @@
+/* Breakpoint mixins */
+
+@mixin for-mobile-narrow-layout {
+    @media (max-width: $mobile-narrow-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-mobile-wide-layout {
+    @media (max-width: $mobile-wide-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-tablet-layout {
+    @media (max-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-tablet-wide-layout {
+    @media (max-width: $tablet-wide-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-normal-layout {
+    @media (max-width: $normal-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-wide-layout {
+    @media (max-width: $wide-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-wider-layout {
+    @media (min-width: $wide-breakpoint) {
+        @content;
+    }
+}

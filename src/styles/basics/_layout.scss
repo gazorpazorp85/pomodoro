@@ -1,0 +1,34 @@
+.main-container {
+    margin: 0 auto;
+    padding: 0;
+
+    @include for-wider-layout {
+        max-width: $wide-breakpoint;
+    }
+
+    @include for-wide-layout {
+        max-width: $normal-breakpoint;
+    }
+
+    @include for-normal-layout {
+        max-width: $tablet-wide-breakpoint;
+    }
+
+    @include for-tablet-wide-layout {
+        max-width: $tablet-breakpoint;
+    }
+
+    @include for-tablet-layout {
+        max-width: $tablet-breakpoint;
+        padding: 0 10px;
+    }
+
+    @include for-mobile-wide-layout {
+        max-width: $mobile-wide-breakpoint;
+    }
+
+    @include for-mobile-narrow-layout {
+        max-width: $mobile-narrow-breakpoint;
+    }
+
+}

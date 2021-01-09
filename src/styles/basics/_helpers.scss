@@ -1,0 +1,75 @@
+// flex helpers
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.full {
+    flex: 1;
+}
+
+// view helpers
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+.ltr {
+    direction: ltr;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.active {
+    font-weight: 800;
+}
+
+// list helpers
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  color: $clr6;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: "barlow", Arial;
+  font-size: rem(18px);
+  letter-spacing: rem(0.75px);
+  margin: 0;
+  background-image: radial-gradient(circle, $clr1, $clr2);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+small {
+  margin: 0;
+  font-size: rem(12px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #98969669;
+}
+
+@include for-mobile-wide-layout {
+  html,
+  body,
+  #root {
+    min-height: unset;
+    height: 100%;
+  }
+}

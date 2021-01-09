@@ -1,0 +1,23 @@
+// Colors
+// background radial from
+$clr1: hsl(214, 47%, 23%);
+// background radial to
+$clr2: hsl(237, 49%, 15%);
+// color theme 1 - peach
+$clr3: hsl(1, 89%, 69%);
+// color theme 2 - azure
+$clr4: hsl(182, 91%, 70%);
+// color theme 3 - violet
+$clr5: hsl(284, 91%, 74%);
+// 
+$clr6: hsl(0, 0%, 95%);
+
+// Breakpoints
+
+$mobile-narrow-breakpoint: 375px;
+$mobile-wide-breakpoint: 460px;
+$tablet-breakpoint: 720px;
+$tablet-wide-breakpoint: 1000px;
+$normal-breakpoint: 1200px;
+$wide-breakpoint: 1440px;
+$wider-breakpoint: 1680px;

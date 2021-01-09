@@ -1,0 +1,23 @@
+.color-option-icon {
+    height: 62px;
+    width: 61.63px;
+    border-radius: 50%;
+    margin-inline-end: 10px;
+}
+
+.color-option-icon:last-child {
+    margin-inline-end: none;
+}
+
+.peach {
+    color: $clr6;
+    background-color: $clr3;
+}
+.azure {
+    color: $clr1;
+    background-color: $clr4;
+}
+.violet {
+    color: $clr1;
+    background-color: $clr5;
+}

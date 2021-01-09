@@ -1,0 +1,17 @@
+.font-option-icon {
+    background-color: #eef0fb;
+    color: #91939f;
+    border-radius: 50%;
+    padding: 20px;
+    margin-inline-end: 10px;
+    // font-size: 20px;
+}
+
+.selected {
+    background-color: #171a37;
+    color: #d9dbe5; 
+}
+
+.font-option-icon:last-child {
+    margin-inline-end: none;
+}

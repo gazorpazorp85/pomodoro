@@ -1,0 +1,55 @@
+.modal-container {
+    position: relative;
+    width: 50%;
+    color: $clr2;
+    background-color: #ffffff;
+    border-radius: 20px;
+    font-family: "barlowbold";
+}
+
+.modal-section {
+    padding: 25px 40px;
+    border-bottom: 2px solid #f3f3f3;
+}
+
+.modal-title-container {
+    justify-content: space-between;
+}
+
+.close-img-container {
+    align-self: center;
+}
+
+.section-title {
+    letter-spacing: 4px;
+    // margin-bottom: 10px;
+}
+
+.time-title {
+    margin-bottom: 10px;
+}
+
+.timer-panel {
+    justify-content: space-between;
+}
+
+// font-section
+.font-setting, .color-setting {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.color-setting {
+    margin-bottom: 20px;
+    border-bottom: none;
+}
+
+.apply-btn {
+    position: absolute;
+    align-self: center;
+    padding: 20px 75px;
+    bottom: -30px;
+    border-radius: 40px;
+}
+
+

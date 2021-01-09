@@ -1,0 +1,22 @@
+.modes-menu-container {
+    height: 75px;
+    width: 50%;
+    background-color: $clr2;
+    color: $clr1;
+    border-radius: 40px;
+    justify-content: space-between;
+    font-size: rem(24px);
+    font-family: "barlowbold";
+    padding: 10px;
+}
+
+.mode {
+    height: 100%;
+    border-radius: 40px;
+    padding: 0 30px;
+    cursor: pointer;
+    &.selected {
+        background-color: $clr3;
+        cursor: default;
+    }
+}
