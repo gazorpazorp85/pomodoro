@@ -1,0 +1,49 @@
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+.base-timer__path-elapsed {
+    position: absolute;
+    stroke-width: 3px;
+    stroke: $clr2;
+    z-index: 3;
+}
+
+.base-timer__path-remaining {
+    /* Just as thick as the original ring */
+    stroke-width: 3px;
+
+    /* Rounds the line endings to create a seamless circle */
+    stroke-linecap: round;
+
+    /* Makes sure the animation starts at the top of the circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+
+    /* One second aligns with the speed of the countdown timer */
+    transition: 1s linear all;
+
+    /* Allows the ring to change color when the color value updates */
+    stroke: currentColor;
+}
+
+.color-peach {
+    color: $clr3;
+}
+.color-azure {
+    color: $clr4;
+}
+.color-violet {
+    color: $clr5;
+}
+
+.base-timer__svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* Flips the svg and makes the animation to move left-to-right */
+    transform: scaleX(-1);
+    z-index: 2;
+    // padding: 20px;
+}
