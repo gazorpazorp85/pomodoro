@@ -17,8 +17,16 @@
     padding: 0 30px;
     cursor: pointer;
     &.selected {
-        background-color: $clr3;
         cursor: default;
         color: inherit;
+        &.peach{
+            background-color: $clr3;
+        }
+        &.azure{
+            background-color: $clr4;
+        }
+        &.violet{
+            background-color: $clr5;
+        }
     }
 }

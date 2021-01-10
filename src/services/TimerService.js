@@ -13,7 +13,8 @@ let gSettings = Utils.load('settings') || {
     },
     font: 'barlow',
     color: 'peach',
-    currentMode: 'pomodoro'
+    currentMode: 'pomodoro',
+    sound: '01'
 }
 
 function loadSettings() {

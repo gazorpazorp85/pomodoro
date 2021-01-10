@@ -22,21 +22,23 @@ function App() {
   const settingsUpdateHandler = (category, diff) => {
     if (category === 'currentMode') {
       setSettings({ ...settings, [category]: diff });
-    } else if (category === 'color' || category === 'font') {
+    } else if (category === 'color' || category === 'font' || category === 'sound') {
       setTempSettings({ ...tempSettings, [category]: diff });
     } else {
       const updatedTime = tempSettings.time[category] + diff;
+      if (updatedTime <= 0) return;
       setTempSettings({ ...tempSettings, time: { ...tempSettings.time, [category]: updatedTime } });
     }
   }
 
   const selectedClassHandler = (category, value) => {
+    const { color } = settings;
     if (category === 'currentMode') {
-      return (settings[category] === value) ? 'selected' : '';
+      return (settings[category] === value) ? `selected ${color}` : '';
     } else if (category === 'font') {
       return (tempSettings[category] === value) ? 'selected' : '';
     } else {
-      return (tempSettings.color === value) ? <img src={checkmarkIcon} alt="selected" /> : ''
+      return (tempSettings[category] === value) ? <img src={checkmarkIcon} alt="selected" /> : ''
     }
   }
 
@@ -48,17 +50,16 @@ function App() {
 
   useEffect(() => {
     TimerService.updateSettings(settings);
+    setSettings(settings)
   }, [settings])
 
-
-  const { currentMode } = settings;
   const { color, time } = tempSettings;
 
   return (
     <div className="flex column align-center full main-container w100">
       <h1 className="app-title">pomodoro</h1>
-      <ModesMenu selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
-      <Timer settings={settings} time={settings.time[currentMode]} />
+      <ModesMenu color={settings.color} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
+      <Timer settings={settings} />
       <div className="flex center pointer settings-btn" onClick={isModalShownHandler}>
         <img src={settingsIcon} alt="settings" />
       </div>

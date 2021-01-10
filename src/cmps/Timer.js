@@ -1,14 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { TimerRing } from './Timer/TimerRing';
 
-function Timer({ settings, time }) {
+function Timer({ settings }) {
 
-    const targetTime = time * 60;
+    const targetTime = settings.time[settings.currentMode] * 60;
     const [currentTime, setCurrentTime] = useState(0);
-    const [timeLeft, setTimeLeft] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(null);
     const [isTimerWorking, setIsTimerWorking] = useState(false);
     const [circleDasharray, setCircleDasharray] = useState('283');
     const interval = useRef(null);
+    const alarmSound = new Audio(`sounds/alarm${settings.sound}.mp3`);
 
     const formatTime = () => {
         const time = targetTime - currentTime;
@@ -31,6 +32,8 @@ function Timer({ settings, time }) {
 
     const isTimeOver = () => {
         if (targetTime - currentTime <= 0) {
+            alarmSound.play()
+                .catch(err => console.log(err));
             clearInterval(interval.current);
         } else {
             setTimeLeft(targetTime - currentTime);
@@ -38,18 +41,26 @@ function Timer({ settings, time }) {
     }
 
     const getRawTimeFraction = () => {
+        if (timeLeft === targetTime) return 0.99999999;
         const rawTimeFraction = timeLeft / targetTime;
         return rawTimeFraction - (1 / targetTime) * (1 - rawTimeFraction);
     }
     const updateCircleDasharray = () => {
-        let rawTimeFraction = getRawTimeFraction();
-        if (rawTimeFraction < 0.1) rawTimeFraction = 0.99999999;
+        const rawTimeFraction = getRawTimeFraction();
         const newCircleDasharray = `${(((rawTimeFraction * 283)).toFixed(0))} 283`;
         setCircleDasharray(newCircleDasharray);
     }
 
     const renderTimerBtnText = () => {
         return isTimerWorking ? 'pause' : 'start';
+    }
+
+    const restartTimer = () => {
+        alarmSound.pause();
+        setCurrentTime(0);
+        setTimeLeft(null);
+        setIsTimerWorking(false);
+        setCircleDasharray('283');
     }
 
     useEffect(() => {
@@ -77,13 +88,22 @@ function Timer({ settings, time }) {
                 <TimerRing circleDasharray={circleDasharray} color={color} />
                 <div className="flex column center align-center inner-timer-container">
                     <div className="flex center timer-time" style={{ fontFamily: font }}>{formatTime()}</div>
-                    <div
-                        className="pointer uppercase time-btn"
-                        onClick={isTimerWorkingHandler}
-                        style={{ fontFamily: font }}
-                    >
-                        {renderTimerBtnText()}
-                    </div>
+                    {targetTime - currentTime > 0 ?
+                        <div
+                            className="pointer uppercase time-btn"
+                            onClick={isTimerWorkingHandler}
+                            style={{ fontFamily: font }}
+                        >
+                            {renderTimerBtnText()}
+                        </div> :
+                        <div
+                            className="pointer uppercase reset-btn"
+                            onClick={restartTimer}
+                            style={{ fontFamily: font }}
+                        >
+                            restart
+                        </div>
+                    }
                 </div>
             </div>
         </div>

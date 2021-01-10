@@ -1,5 +1,6 @@
 import { ColorIcon } from './SettingsModal/ColorIcon';
 import { FontIcon } from './SettingsModal/FontIcon';
+import { SoundIcon } from './SettingsModal/SoundIcon';
 import { TimerController } from './SettingsModal/TimerController';
 
 import iconClose from '../assets/imgs/icon-close.svg';
@@ -9,6 +10,7 @@ function SettingsModal({ color, isModalShownHandler, saveSettings, selectedClass
     const timerModes = ['pomodoro', 'shortBreak', 'longBreak'];
     const fontTypes = ['barlow', 'barlowsemibold', 'barlowbold'];
     const colorTypes = ['peach', 'azure', 'violet'];
+    const soundTypes = ['01', '02', '03', '04', '05', '06'];
 
     return (
         <div className="flex column modal-container" onClick={(ev) => ev.stopPropagation()}>
@@ -39,6 +41,14 @@ function SettingsModal({ color, isModalShownHandler, saveSettings, selectedClass
                 <div className="flex">
                     {colorTypes.map(colorType => {
                         return <ColorIcon key={colorType} colorType={colorType} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
+                    })}
+                </div>
+            </div>
+            <div className="flex modal-section sound-setting">
+                <div className="uppercase section-title">sound</div>
+                <div className="flex">
+                    {soundTypes.map(soundType => {
+                        return <SoundIcon key={soundType} soundType={soundType} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
                     })}
                 </div>
             </div>

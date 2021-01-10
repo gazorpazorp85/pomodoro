@@ -34,12 +34,14 @@
 }
 
 // font-section
-.font-setting, .color-setting {
+.font-setting,
+.color-setting,
+.sound-setting {
     align-items: center;
     justify-content: space-between;
 }
 
-.color-setting {
+.sound-setting {
     margin-bottom: 20px;
     border-bottom: none;
 }
@@ -51,5 +53,3 @@
     bottom: -30px;
     border-radius: 40px;
 }
-
-
