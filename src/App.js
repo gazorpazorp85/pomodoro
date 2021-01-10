@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ModesMenu } from './cmps/ModesMenu';
 import { SettingsModal } from './cmps/SettingsModal';
@@ -42,8 +42,14 @@ function App() {
 
   const saveSettings = () => {
     TimerService.updateSettings(tempSettings);
+    setSettings(tempSettings)
     isModalShownHandler();
   }
+
+  useEffect(() => {
+    TimerService.updateSettings(settings);
+  }, [settings])
+
 
   const { currentMode } = settings;
   const { color, time } = tempSettings;
@@ -52,7 +58,7 @@ function App() {
     <div className="flex column align-center full main-container w100">
       <h1 className="app-title">pomodoro</h1>
       <ModesMenu selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
-      <Timer time={settings.time[currentMode]} />
+      <Timer settings={settings} time={settings.time[currentMode]} />
       <div className="flex center pointer settings-btn" onClick={isModalShownHandler}>
         <img src={settingsIcon} alt="settings" />
       </div>

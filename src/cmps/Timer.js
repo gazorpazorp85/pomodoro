@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { TimerRing } from './Timer/TimerRing';
 
-// import { TimerService } from '../services/TimerService';
-
-function Timer({ time }) {
+function Timer({ settings, time }) {
 
     const targetTime = time * 60;
     const [currentTime, setCurrentTime] = useState(0);
@@ -45,7 +43,7 @@ function Timer({ time }) {
     }
     const updateCircleDasharray = () => {
         let rawTimeFraction = getRawTimeFraction();
-        if (rawTimeFraction < 0.1) rawTimeFraction = 0.99999999; 
+        if (rawTimeFraction < 0.1) rawTimeFraction = 0.99999999;
         const newCircleDasharray = `${(((rawTimeFraction * 283)).toFixed(0))} 283`;
         setCircleDasharray(newCircleDasharray);
     }
@@ -71,15 +69,18 @@ function Timer({ time }) {
         updateCircleDasharray();
     }, [timeLeft])
 
+    const { color, font } = settings;
+
     return (
         <div className="flex column center align-center timer-container">
             <div className="flex column center align-center timer-container-inner-circle">
-                <TimerRing circleDasharray={circleDasharray} />
+                <TimerRing circleDasharray={circleDasharray} color={color} />
                 <div className="flex column center align-center inner-timer-container">
-                    <div className="flex center timer-time">{formatTime()}</div>
+                    <div className="flex center timer-time" style={{ fontFamily: font }}>{formatTime()}</div>
                     <div
                         className="pointer uppercase time-btn"
                         onClick={isTimerWorkingHandler}
+                        style={{ fontFamily: font }}
                     >
                         {renderTimerBtnText()}
                     </div>
