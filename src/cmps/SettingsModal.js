@@ -1,6 +1,4 @@
-import { ColorIcon } from './SettingsModal/ColorIcon';
-import { FontIcon } from './SettingsModal/FontIcon';
-import { SoundIcon } from './SettingsModal/SoundIcon';
+import { SettingsModalSectionTemplate } from './SettingsModal/SettingsModalSectionTemplate';
 import { TimerController } from './SettingsModal/TimerController';
 
 import iconClose from '../assets/imgs/icon-close.svg';
@@ -11,6 +9,7 @@ function SettingsModal({ color, isModalShownHandler, saveSettings, selectedClass
     const fontTypes = ['barlow', 'barlowsemibold', 'barlowbold'];
     const colorTypes = ['peach', 'azure', 'violet'];
     const soundTypes = ['01', '02', '03', '04', '05', '06'];
+    const cmps = [{ settingName: 'font', types: fontTypes }, { settingName: 'color', types: colorTypes }, { settingName: 'sound', types: soundTypes }];
 
     return (
         <div className="flex column modal-container" onClick={(ev) => ev.stopPropagation()}>
@@ -24,34 +23,28 @@ function SettingsModal({ color, isModalShownHandler, saveSettings, selectedClass
                 <div className="uppercase section-title time-title">time (minutes)</div>
                 <div className="flex timer-panel">
                     {timerModes.map(timeMode => {
-                        return <TimerController key={timeMode} category={timeMode} settingsUpdateHandler={settingsUpdateHandler} time={time[timeMode]} />
+                        return (
+                            <TimerController
+                                category={timeMode}
+                                key={timeMode}
+                                settingsUpdateHandler={settingsUpdateHandler}
+                                time={time[timeMode]}
+                            />
+                        )
                     })}
                 </div>
             </div>
-            <div className="flex modal-section font-setting">
-                <div className="uppercase section-title">font</div>
-                <div className="flex">
-                    {fontTypes.map(fontType => {
-                        return <FontIcon key={fontType} fontType={fontType} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
-                    })}
-                </div>
-            </div>
-            <div className="flex modal-section color-setting">
-                <div className="uppercase section-title">color</div>
-                <div className="flex">
-                    {colorTypes.map(colorType => {
-                        return <ColorIcon key={colorType} colorType={colorType} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
-                    })}
-                </div>
-            </div>
-            <div className="flex modal-section sound-setting">
-                <div className="uppercase section-title">sound</div>
-                <div className="flex">
-                    {soundTypes.map(soundType => {
-                        return <SoundIcon key={soundType} soundType={soundType} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
-                    })}
-                </div>
-            </div>
+            {cmps.map(cmp => {
+                return (
+                    <SettingsModalSectionTemplate
+                        key={cmp.settingName}
+                        selectedClassHandler={selectedClassHandler}
+                        settingName={cmp.settingName}
+                        settingsUpdateHandler={settingsUpdateHandler}
+                        types={cmp.types}
+                    />
+                )
+            })}
             <div
                 className={`flex center align-center pointer capitalize ${color} apply-btn`}
                 onClick={saveSettings}

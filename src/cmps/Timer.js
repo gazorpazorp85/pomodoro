@@ -66,7 +66,6 @@ function Timer({ settings }) {
     useEffect(() => {
         if (isTimerWorking) {
             timerHandler();
-            updateCircleDasharray();
         } else {
             clearInterval(interval.current);
         }

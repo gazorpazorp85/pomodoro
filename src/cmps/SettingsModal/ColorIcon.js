@@ -1,10 +1,10 @@
-function ColorIcon({ colorType, selectedClassHandler, settingsUpdateHandler }) {
+function ColorIcon({ selectedClassHandler, settingsUpdateHandler, type }) {
     return (
         <div
-            className={`flex center align-center pointer ${colorType} color-option-icon`}
-            onClick={() => settingsUpdateHandler('color', colorType)}
+            className={`flex center align-center pointer ${type} color-option-icon`}
+            onClick={() => settingsUpdateHandler('color', type)}
         >
-            {selectedClassHandler('color', colorType)}
+            {selectedClassHandler('color', type)}
         </div>
     )
 }

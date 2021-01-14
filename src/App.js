@@ -73,7 +73,8 @@ function App() {
             settingsUpdateHandler={settingsUpdateHandler}
             time={time}
           />
-        </div>}
+        </div>
+      }
     </div>
   );
 }

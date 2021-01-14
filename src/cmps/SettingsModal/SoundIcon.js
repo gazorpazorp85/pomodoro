@@ -3,13 +3,18 @@ import { useEffect, useRef, useState } from 'react';
 import playIcon from '../../assets/imgs/play.png';
 import pauseIcon from '../../assets/imgs/pause.png';
 
-function SoundIcon({ selectedClassHandler, settingsUpdateHandler, soundType }) {
+function SoundIcon({ selectedClassHandler, settingsUpdateHandler, type }) {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef();
 
     const iconHandler = () => {
         return isPlaying ? pauseIcon : playIcon;
+    }
+
+    const selectSoundUpdate = () => {
+        settingsUpdateHandler('sound', type);
+        setIsPlaying(prevIsPlaying => !prevIsPlaying);
     }
 
     useEffect(() => {
@@ -23,14 +28,13 @@ function SoundIcon({ selectedClassHandler, settingsUpdateHandler, soundType }) {
     return (
         <div className="flex column align-center">
             <div
-                className="pointer sound-option-icon"
-                onClick={() => settingsUpdateHandler('sound', soundType)}
-            >{selectedClassHandler('sound', soundType) || soundType}
+                className="flex center align-center pointer sound-option-icon"
+                onClick={() => setIsPlaying(!isPlaying)}
+            >
+                {selectedClassHandler('sound', type) || <img src={iconHandler()} alt="" />}
             </div>
-            <div onClick={() => setIsPlaying(!isPlaying)}>
-                <img src={iconHandler()} alt="" />
-            </div>
-            <audio ref={audioRef} src={`sounds/alarm${soundType}.mp3`} />
+            {isPlaying && <div className="pointer" onClick={selectSoundUpdate}>Select</div>}
+            <audio ref={audioRef} src={`sounds/alarm${type}.mp3`} />
         </div>
     )
 }
