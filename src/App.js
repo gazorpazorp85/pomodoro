@@ -58,7 +58,11 @@ function App() {
   return (
     <div className="flex column align-center full main-container w100">
       <h1 className="app-title">pomodoro</h1>
-      <ModesMenu color={settings.color} selectedClassHandler={selectedClassHandler} settingsUpdateHandler={settingsUpdateHandler} />
+      <ModesMenu
+        color={settings.color}
+        selectedClassHandler={selectedClassHandler}
+        settingsUpdateHandler={settingsUpdateHandler}
+      />
       <Timer settings={settings} />
       <div className="flex center pointer settings-btn" onClick={isModalShownHandler}>
         <img src={settingsIcon} alt="settings" />

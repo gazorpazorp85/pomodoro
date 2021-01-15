@@ -6,7 +6,7 @@
 }
 
 .color-option-icon:last-child {
-    margin-inline-end: none;
+    margin-inline-end: unset;
 }
 
 .peach {
@@ -20,4 +20,12 @@
 .violet {
     color: $clr1;
     background-color: $clr5;
+}
+
+@include for-mobile-wide-layout {
+    .color-option-icon {
+        height: 39px;
+        width: 39px;
+        margin-inline-end: 20px;
+    }
 }

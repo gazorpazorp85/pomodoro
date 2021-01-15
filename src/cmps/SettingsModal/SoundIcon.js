@@ -26,14 +26,14 @@ function SoundIcon({ selectedClassHandler, settingsUpdateHandler, type }) {
     }, [isPlaying])
 
     return (
-        <div className="flex column align-center">
+        <div className="flex column align-center sound-option-icon-container">
             <div
                 className="flex center align-center pointer sound-option-icon"
                 onClick={() => setIsPlaying(!isPlaying)}
             >
                 {selectedClassHandler('sound', type) || <img src={iconHandler()} alt="" />}
             </div>
-            {isPlaying && <div className="pointer" onClick={selectSoundUpdate}>Select</div>}
+            {isPlaying && <div className="pointer select-button" onClick={selectSoundUpdate}>Select</div>}
             <audio ref={audioRef} src={`sounds/alarm${type}.mp3`} />
         </div>
     )

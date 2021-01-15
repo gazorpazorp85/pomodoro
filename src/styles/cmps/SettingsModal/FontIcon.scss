@@ -9,9 +9,16 @@
 
 .selected {
     background-color: #171a37;
-    color: #d9dbe5; 
+    color: #d9dbe5;
 }
 
 .font-option-icon:last-child {
-    margin-inline-end: none;
+    margin-inline-end: unset;
+}
+
+@include for-mobile-wide-layout {
+    .font-option-icon {
+        padding: 10px;
+        margin-inline-end: 20px;
+    }
 }

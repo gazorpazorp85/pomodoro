@@ -37,3 +37,15 @@
 .reset-btn {
     letter-spacing: 8px;
 }
+
+@include for-mobile-wide-layout {
+    .timer-container {
+        width: 100%;
+        height: 414px;
+        margin-bottom: 30px;
+    }
+
+    .timer-time {
+        font-size: rem(90px);
+    }
+}

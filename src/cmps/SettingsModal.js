@@ -9,7 +9,11 @@ function SettingsModal({ color, isModalShownHandler, saveSettings, selectedClass
     const fontTypes = ['barlow', 'barlowsemibold', 'barlowbold'];
     const colorTypes = ['peach', 'azure', 'violet'];
     const soundTypes = ['01', '02', '03', '04', '05', '06'];
-    const cmps = [{ settingName: 'font', types: fontTypes }, { settingName: 'color', types: colorTypes }, { settingName: 'sound', types: soundTypes }];
+    const cmps = [
+        { settingName: 'font', types: fontTypes },
+        { settingName: 'color', types: colorTypes },
+        { settingName: 'sound', types: soundTypes }
+    ];
 
     return (
         <div className="flex column modal-container" onClick={(ev) => ev.stopPropagation()}>

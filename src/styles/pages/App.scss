@@ -1,6 +1,6 @@
 .app-title {
-    font-family: 'barlowbold';
-    color: #7B7E9B;
+    font-family: "barlowbold";
+    color: #7b7e9b;
     text-align: center;
     margin: 50px 0px;
 }
@@ -15,4 +15,18 @@
 
 .settings-btn {
     margin-top: 20px;
+}
+
+@include for-mobile-wide-layout {
+    .app-title {
+        margin: 30px 0px;
+    }
+
+    .screen {
+        padding: 0px 10px;
+    }
+
+    .settings-btn {
+        margin-top: unset;
+    }
 }

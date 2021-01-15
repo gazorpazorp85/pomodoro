@@ -30,3 +30,14 @@
         }
     }
 }
+
+@include for-mobile-wide-layout {
+    .modes-menu-container {
+        width: 100%;
+        font-size: rem(18px);
+    }
+
+    .mode {
+        padding: 0 15px;
+    }
+}

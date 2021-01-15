@@ -18,6 +18,7 @@ body,
 body {
   font-family: "barlow", Arial;
   font-size: rem(18px);
+  // font-size: calc(1em + 1vw);
   letter-spacing: rem(0.75px);
   margin: 0;
   background-image: radial-gradient(circle, $clr1, $clr2);
@@ -66,5 +67,9 @@ h6 {
   #root {
     min-height: unset;
     height: 100%;
+  }
+
+  body {
+    font-size: rem(16px);
   }
 }

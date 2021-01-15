@@ -3,11 +3,12 @@ import { mapSettingsModalDynamicComponent } from './mapSettingsModalDynamicCompo
 function SettingsModalSectionTemplate({ selectedClassHandler, settingName, settingsUpdateHandler, types }) {
 
     const Cmp = mapSettingsModalDynamicComponent[settingName];
+    const className = settingName === 'sound' ? 'sound-icons-container' : '';
 
     return (
         <div className={`flex modal-section ${settingName}-setting`}>
             <div className="uppercase section-title">{settingName}</div>
-            <div className="flex">
+            <div className={`flex ${className}`}>
                 {types.map(type => {
                     return (
                         <Cmp
