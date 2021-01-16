@@ -19,15 +19,32 @@
     &.selected {
         cursor: default;
         color: inherit;
-        &.peach{
+        &.peach {
             background-color: $clr3;
         }
-        &.azure{
+        &.azure {
             background-color: $clr4;
         }
-        &.violet{
+        &.violet {
             background-color: $clr5;
         }
+    }
+}
+
+@include for-normal-layout {
+    .modes-menu-container {
+        width: 57%;
+    }
+}
+
+@include for-tablet-wide-layout {
+    .modes-menu-container {
+        width: 60%;
+        font-size: rem(20px);
+    }
+
+    .mode {
+        padding: 0 15px;
     }
 }
 
@@ -35,9 +52,5 @@
     .modes-menu-container {
         width: 100%;
         font-size: rem(18px);
-    }
-
-    .mode {
-        padding: 0 15px;
     }
 }

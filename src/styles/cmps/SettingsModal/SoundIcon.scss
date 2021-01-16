@@ -16,8 +16,7 @@
     margin-inline-end: unset;
 }
 
-@include for-mobile-wide-layout {
-
+@include for-tablet-layout {
     .sound-icons-container {
         width: 50%;
         flex-wrap: wrap;
@@ -25,12 +24,18 @@
     }
 
     .sound-option-icon-container {
-        margin-inline-end: 20px;
         margin-bottom: 15px;
     }
 
     .sound-option-icon-container:nth-child(3n) {
         margin-inline-end: unset;
+    }
+}
+
+@include for-mobile-wide-layout {
+
+    .sound-option-icon-container {
+        margin-inline-end: 20px;
     }
 
     .sound-option-icon {

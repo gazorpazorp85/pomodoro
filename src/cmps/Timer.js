@@ -9,7 +9,8 @@ function Timer({ settings }) {
     const [isTimerWorking, setIsTimerWorking] = useState(false);
     const [circleDasharray, setCircleDasharray] = useState('283');
     const interval = useRef(null);
-    const alarmSound = new Audio(`sounds/alarm${settings.sound}.mp3`);
+    const alarmSound = require(`../assets/sounds/alarm${settings.sound}.mp3`);
+    const alarmSoundRef = useRef(null);
 
     const formatTime = () => {
         const time = targetTime - currentTime;
@@ -32,7 +33,7 @@ function Timer({ settings }) {
 
     const isTimeOver = () => {
         if (targetTime - currentTime <= 0) {
-            alarmSound.play()
+            alarmSoundRef.current.play()
                 .catch(err => console.log(err));
             clearInterval(interval.current);
         } else {
@@ -56,7 +57,7 @@ function Timer({ settings }) {
     }
 
     const restartTimer = () => {
-        alarmSound.pause();
+        alarmSoundRef.current.pause();
         setCurrentTime(0);
         setTimeLeft(null);
         setIsTimerWorking(false);
@@ -86,7 +87,7 @@ function Timer({ settings }) {
             <div className="flex column center align-center timer-container-inner-circle">
                 <TimerRing circleDasharray={circleDasharray} color={color} />
                 <div className="flex column center align-center inner-timer-container">
-                    <div className="flex center timer-time" style={{ fontFamily: font }}>{formatTime()}</div>
+                    <div className="flex center timer-display" style={{ fontFamily: font }}>{formatTime()}</div>
                     {targetTime - currentTime > 0 ?
                         <div
                             className="pointer uppercase time-btn"
@@ -103,6 +104,7 @@ function Timer({ settings }) {
                             restart
                         </div>
                     }
+                    <audio ref={alarmSoundRef} src={alarmSound.default} />
                 </div>
             </div>
         </div>

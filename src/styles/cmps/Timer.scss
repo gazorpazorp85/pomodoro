@@ -25,9 +25,8 @@
     z-index: 4;
 }
 
-.timer-time {
+.timer-display {
     align-self: center;
-    width: 290px;
     font-size: rem(110px);
     font-variant-numeric: tabular-nums;
     margin-bottom: 20px;
@@ -38,6 +37,17 @@
     letter-spacing: 8px;
 }
 
+@include for-tablet-wide-layout {
+    .timer-container {
+        height: 450px;
+        width: 450px;
+    }
+
+    .timer-display {
+        font-size: rem(100px);
+    }
+}
+
 @include for-mobile-wide-layout {
     .timer-container {
         width: 100%;
@@ -45,7 +55,7 @@
         margin-bottom: 30px;
     }
 
-    .timer-time {
+    .timer-display {
         font-size: rem(90px);
     }
 }

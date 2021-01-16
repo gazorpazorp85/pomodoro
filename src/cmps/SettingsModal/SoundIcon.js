@@ -7,6 +7,7 @@ function SoundIcon({ selectedClassHandler, settingsUpdateHandler, type }) {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef();
+    const sound = require(`../../assets/sounds/alarm${type}.mp3`);
 
     const iconHandler = () => {
         return isPlaying ? pauseIcon : playIcon;
@@ -34,7 +35,7 @@ function SoundIcon({ selectedClassHandler, settingsUpdateHandler, type }) {
                 {selectedClassHandler('sound', type) || <img src={iconHandler()} alt="" />}
             </div>
             {isPlaying && <div className="pointer select-button" onClick={selectSoundUpdate}>Select</div>}
-            <audio ref={audioRef} src={`sounds/alarm${type}.mp3`} />
+            <audio ref={audioRef} src={sound.default} />
         </div>
     )
 }
