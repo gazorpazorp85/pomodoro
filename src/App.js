@@ -12,10 +12,11 @@ import settingsIcon from './assets/imgs/settingsIcon.png';
 function App() {
   const [isModalShown, setIsModalShown] = useState(false);
   const [settings, setSettings] = useState(TimerService.loadSettings());
-  const [tempSettings, setTempSettings] = useState(TimerService.loadSettings());
+  const [modalSettings, setModalSettings] = useState(TimerService.loadSettings());
+  const [isTimerWorking, setIsTimerWorking] = useState(false);
 
   const isModalShownHandler = (txt) => {
-    if (txt === 'closeModal') setTempSettings(TimerService.loadSettings());
+    if (txt === 'closeModal') setModalSettings(TimerService.loadSettings());
     setIsModalShown(prevIsModalShown => !prevIsModalShown);
   }
 
@@ -23,11 +24,11 @@ function App() {
     if (category === 'currentMode') {
       setSettings({ ...settings, [category]: diff });
     } else if (category === 'color' || category === 'font' || category === 'sound') {
-      setTempSettings({ ...tempSettings, [category]: diff });
+      setModalSettings({ ...modalSettings, [category]: diff });
     } else {
-      const updatedTime = tempSettings.time[category] + diff;
+      const updatedTime = modalSettings.time[category] + diff;
       if (updatedTime <= 0) return;
-      setTempSettings({ ...tempSettings, time: { ...tempSettings.time, [category]: updatedTime } });
+      setModalSettings({ ...modalSettings, time: { ...modalSettings.time, [category]: updatedTime } });
     }
   }
 
@@ -36,34 +37,35 @@ function App() {
     if (category === 'currentMode') {
       return (settings[category] === value) ? `selected ${color}` : '';
     } else if (category === 'font') {
-      return (tempSettings[category] === value) ? 'selected' : '';
+      return (modalSettings[category] === value) ? 'selected' : '';
     } else {
-      return (tempSettings[category] === value) ? <img src={checkmarkIcon} alt="selected" /> : ''
+      return (modalSettings[category] === value) ? <img src={checkmarkIcon} alt="selected" /> : ''
     }
   }
 
   const saveSettings = () => {
-    TimerService.updateSettings(tempSettings);
-    setSettings(tempSettings)
+    TimerService.updateSettings(modalSettings);
+    setSettings(modalSettings);
     isModalShownHandler();
   }
 
   useEffect(() => {
     TimerService.updateSettings(settings);
-    setSettings(settings)
+    setSettings(settings);
   }, [settings])
 
-  const { color, time } = tempSettings;
+  const { color, time } = modalSettings;
 
   return (
     <div className="flex column align-center full main-container w100">
       <h1 className="app-title">pomodoro</h1>
       <ModesMenu
         color={settings.color}
+        isTimerWorking={isTimerWorking}
         selectedClassHandler={selectedClassHandler}
         settingsUpdateHandler={settingsUpdateHandler}
       />
-      <Timer settings={settings} />
+      <Timer isTimerWorking={isTimerWorking} setIsTimerWorking={setIsTimerWorking} settings={settings} />
       <div className="flex center pointer settings-btn" onClick={isModalShownHandler}>
         <img src={settingsIcon} alt="settings" />
       </div>

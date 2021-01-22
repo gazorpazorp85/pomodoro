@@ -31,6 +31,15 @@
     }
 }
 
+.modal-timer-msg {
+    position: absolute;
+    max-width: 125px;
+    background-color: $clr6;
+    font-size: rem(14px);
+    border-radius: 10px;
+    padding: 10px;
+}
+
 @include for-normal-layout {
     .modes-menu-container {
         width: 57%;

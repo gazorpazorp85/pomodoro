@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { TimerRing } from './Timer/TimerRing';
 
-function Timer({ settings }) {
+function Timer({ isTimerWorking, setIsTimerWorking, settings }) {
 
     const targetTime = settings.time[settings.currentMode] * 60;
     const [currentTime, setCurrentTime] = useState(0);
     const [timeLeft, setTimeLeft] = useState(null);
-    const [isTimerWorking, setIsTimerWorking] = useState(false);
     const [circleDasharray, setCircleDasharray] = useState('283');
     const interval = useRef(null);
     const alarmSound = require(`../assets/sounds/alarm${settings.sound}.mp3`);
@@ -72,13 +71,14 @@ function Timer({ settings }) {
         }
     }, [isTimerWorking]);
 
-    useEffect(() => {
-        isTimeOver();
-    }, [currentTime]);
+    useEffect(isTimeOver, [currentTime, targetTime])
 
     useEffect(() => {
         updateCircleDasharray();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeLeft])
+
+    // useEffect(updateCircleDasharray, [timeLeft]);
 
     const { color, font } = settings;
 
