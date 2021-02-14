@@ -4,16 +4,21 @@
     background-color: #eef0fb;
     color: #91939f;
     border-radius: 50%;
-    // padding: 20px;
     margin-bottom: 10px;
 }
 
 .sound-option-icon-container {
+    position: relative;
     margin-inline-end: 10px;
 }
 
 .sound-option-icon-container:last-child {
     margin-inline-end: unset;
+}
+
+.select-button {
+    position: absolute;
+    bottom: -17px;
 }
 
 @include for-tablet-layout {
@@ -46,5 +51,6 @@
 
     .select-button {
         font-size: rem(14px);
+        bottom: -10px;
     }
 }

@@ -78,8 +78,6 @@ function Timer({ isTimerWorking, setIsTimerWorking, settings }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeLeft])
 
-    // useEffect(updateCircleDasharray, [timeLeft]);
-
     const { color, font } = settings;
 
     return (
